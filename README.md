@@ -40,5 +40,6 @@ Retrieves the transaction history.
 'addressToString(address _addr) internal pure returns (string memory)'
 Utility function to convert an address to a string.
 
-##Authors
+
+## **Authors**
 Harsh shende
