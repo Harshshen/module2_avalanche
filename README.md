@@ -1,6 +1,6 @@
-# **Assessment Smart Contract**
+# **Create and Mint Token**
 
-This is a Solidity smart contract for managing an account with deposit and withdrawal functionality.
+This is a Solidity smart contract for create your own ERC20 token and deploy it using HardHat or Remix. Once deployed, you should be able to interact with it for your walk-through video. From your chosen tool, the contract owner should be able to mint tokens to a provided address and any user should be able to burn and transfer tokens
 
 ## **Table of Contents**
 
@@ -11,7 +11,7 @@ This is a Solidity smart contract for managing an account with deposit and withd
 
 ## **Introduction**
 
-The `Assessment` smart contract allows for basic account management, enabling deposits and withdrawals. It logs transactions and provides an overview of the transaction history.
+The peoject allows to mint, burn and transfer the amount of tokens
 
 ## **Getting Started**
 
@@ -22,23 +22,14 @@ The `Assessment` smart contract allows for basic account management, enabling de
 
 ## **Functions**
 
-'constructor(uint256 initBalance) payable'
-Initializes the contract with an initial balance.
+'function mint(address account, uint256 amount) external onlyOwner'
+this function will mint token for us
 
-'getBalance() public view returns (uint256)'
-Retrieves the current balance of the account.
+'function burn(uint256 amount) external onlyOwner'
+this function will burn token for us
 
-'deposit(uint256 _amount) public payable'
-Allows the owner to deposit funds into the account.
-
-'withdraw(uint256 _withdrawAmount) public'
-Allows the owner to withdraw funds from the account.
-
-'getTransactionHistory() public view returns (Transaction[] memory)'
-Retrieves the transaction history.
-
-'addressToString(address _addr) internal pure returns (string memory)'
-Utility function to convert an address to a string.
+' function transferWithCheck(address to, uint256 amount) external'
+this function will tranfer tokens for us 
 
 
 ## **Authors**
