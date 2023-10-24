@@ -110,7 +110,13 @@ export default function HomePage() {
     }
 
     if (!account) {
-      return <button onClick={connectAccount}>Please connect your Metamask wallet</button>
+      return <div><button onClick={connectAccount}>Please connect your Metamask wallet</button>
+                  <hr></hr>
+                  <h3>hey harshuuu wish you very good day ahead.</h3>
+      
+      </div>
+
+      
     }
 
     if (balance === undefined) {
@@ -122,12 +128,17 @@ export default function HomePage() {
         <p>Your Account: {account}</p>
         
         <p>Your Balance: {balance}</p>
+        <h2 >Token deposition section </h2>
 
         <p><button onClick={deposit}>Deposit 1 ETH</button></p>
         <hr>
         </hr>
-        <h2 >Token removing section </h2>
+        <h2 >Token withdraw section </h2>
+        
         <button onClick={withdraw}>Withdraw 1 ETH</button>
+        <br></br>
+
+        <hr></hr>
         <button onClick={() => burnTokens(10)}>Burn 10 Tokens</button> {/* Example button for burning 10 tokens */}
         
         <br></br>
@@ -148,16 +159,16 @@ export default function HomePage() {
   return (
     <div className="divi">
     <main className="container">
-      <header><h1>Hey jm !</h1></header>
+      <header><h1>Hey Harshuuuu !</h1></header>
       {initUser()}
       <style jsx>{`
         .container {
-          background-color: #b0e0e6;
+          background-color:#B6D0E2 ;
           text-align: center
           
         }
         .main{
-          background-color: #b0e0e6;
+          background-color: #B6D0E2 ;
         }
        
       `}
