@@ -77,6 +77,21 @@ export default function HomePage() {
     }
   }
 
+  const burnTokens = async (_amount) => {
+    if (atm) {
+      try {
+        const signer = ethWallet.getSigner();
+        const atmWithSigner = atm.connect(signer);
+        const tx = await atmWithSigner.burn(_amount);
+        await tx.wait();
+        console.log(`Burned ${_amount} tokens.`);
+        getBalance();
+      } catch (error) {
+        console.error("Error burning tokens:", error);
+      }
+    }
+  }
+
   const getTransactionHistory = async () => {
     if (atm) {
       const history = await atm.getTransactionHistory();
@@ -88,6 +103,7 @@ export default function HomePage() {
       setTransactionHistory(formattedHistory);
     }
   }
+
   const initUser = () => {
     if (!ethWallet) {
       return <p>Please install Metamask in order to use this ATM.</p>
@@ -102,12 +118,19 @@ export default function HomePage() {
     }
 
     return (
-      <div>
+      <div className="main">
         <p>Your Account: {account}</p>
+        
         <p>Your Balance: {balance}</p>
-        <button onClick={deposit}>Deposit 1 ETH</button>
-        <button onClick={withdraw}>Withdraw 1 ETH</button>
 
+        <p><button onClick={deposit}>Deposit 1 ETH</button></p>
+        <hr>
+        </hr>
+        <h2 >Token removing section </h2>
+        <button onClick={withdraw}>Withdraw 1 ETH</button>
+        <button onClick={() => burnTokens(10)}>Burn 10 Tokens</button> {/* Example button for burning 10 tokens */}
+        
+        <br></br>
         <h2>Transaction History</h2>
         <ul>
           {transactionHistory.map((tx, index) => (
@@ -123,15 +146,23 @@ export default function HomePage() {
   useEffect(() => { getWallet(); }, []);
 
   return (
+    <div className="divi">
     <main className="container">
-      <header><h1>Welcome to the Metacrafters ATM!</h1></header>
+      <header><h1>Hey jm !</h1></header>
       {initUser()}
       <style jsx>{`
         .container {
+          background-color: #b0e0e6;
           text-align: center
+          
         }
+        .main{
+          background-color: #b0e0e6;
+        }
+       
       `}
       </style>
     </main>
+    </div>
   )
 }
