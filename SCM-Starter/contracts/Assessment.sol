@@ -76,6 +76,7 @@ contract Assessment {
         }
         return string(str);
     }
+
     function burn(uint256 _amount) public {
     require(msg.sender == owner, "You are not authorized to perform this action");
     require(_amount > 0, "The amount to burn must be greater than 0");
