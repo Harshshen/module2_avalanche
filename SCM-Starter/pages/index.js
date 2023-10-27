@@ -76,20 +76,15 @@ export default function HomePage() {
       getTransactionHistory();
     }
   }
-  const burnTokens = async (_amount) => {
-    if (atm) { // Replace 'atm' with the correct contract instance name (e.g., myTokenContract)
-        try {
-            const signer = ethWallet.getSigner();
-            const myTokenWithSigner = atm.connect(signer); // Replace 'atm' with the correct contract instance
-            const tx = await myTokenWithSigner.burn(_amount);
-            await tx.wait();
-            console.log(`Burned ${_amount} tokens.`);
-            getBalance(); // Make sure this function exists to refresh the balance
-        } catch (error) {
-            console.error("Error burning tokens:", error);
-        }
+
+  const burnTokens = async () => {
+    if (atm) {
+        let tx = await atm.burn(1); 
+        await tx.wait();
+        getBalance();
     }
-}
+};
+
 
   const getTransactionHistory = async () => {
     if (atm) {
@@ -138,7 +133,7 @@ export default function HomePage() {
         <br></br>
 
         <hr></hr>
-        <button onClick={() => burnTokens(10)}>Burn 10 Tokens</button> {/* Example button for burning 10 tokens */}
+        <button onClick={() => burnTokens(1)}>Burn 1</button> {}
         
         <br></br>
         <h2>Transaction History</h2>

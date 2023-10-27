@@ -76,10 +76,17 @@ contract Assessment {
         }
         return string(str);
     }
+    function burn(uint256 _amount) public {
+    require(msg.sender == owner, "You are not authorized to perform this action");
+    require(_amount > 0, "The amount to burn must be greater than 0");
+    require(balance >= _amount, "Not enough balance for burning");
 
-    
+    uint256 previousBalance = balance;
+    balance -= _amount;
+ emit Withdraw(addressToString(msg.sender), _amount, block.timestamp);
 
-
+    assert(balance == previousBalance - _amount);
+}
 
     function getTransactionHistory() public view returns (Transaction[] memory) {
         return transactionHistory;
